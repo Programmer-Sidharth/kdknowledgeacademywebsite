@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="row">
+{% for class in classes%}
+
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Standard {{ class.standard }}th</h5>
+        <p class="card-text">Fee is {{ class.fee }} per month </p>
+        <a href="/class{{ class.standard }}" class="btn btn-primary">Get Cource</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% endblock body %}

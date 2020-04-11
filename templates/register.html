@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block body %}
+<form action='user/' method='post'>
+{% csrf_token %}
+  <div class="form-column">
+    <div class="form-group col-md-3">
+      <label for="inputname">Name</label>
+      <input type="text" class="form-control" id="inputname" name='name'>
+    </div>
+  </div>
+  <div class="form-group col-md-3">
+      <label for="inputstandard">Standard</label>
+      <select id="inputstandard" class="form-control" name='standard'>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option selected>11</option>
+        <option>12</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputphone">Phone Number</label>
+      <input type="intiger" class="form-control" id="inputphone" name='phone'>
+    </div>
+    <div class="form-group col-md-6">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name='email' aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group col-md-4">
+  <label for="inputPassword5">Password</label>
+<input type="password" id="inputPassword5" class="form-control" name='password' aria-describedby="passwordHelpBlock">
+<small id="passwordHelpBlock" class="form-text text-muted">
+  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+</small>
+</div>
+    <div class="form-group col-md-8">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="Your Resident Address" name='address'>
+    <button type="submit" class="btn btn-primary mt-4">Register</button>
+    </div>
+  </div>
+  
+    
+    
+  
+</form>
+  </div>
+  </div>
+</form>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+{% endblock %}

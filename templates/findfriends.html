@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <img src='{% static 'standard/kd.png' %}' alt="logo" width="120">
+        <h1 class="jumbotron-heading"><span>KD Knowledge Academy</span></h1>
+        <p class="lead text-muted">Search Friends Using Their Roll Numbers...</p>
+<form action='user/' method='post'>
+{% csrf_token %}
+    <div class="row">
+        <div class="col">
+        <input type="text" class="form-control" placeholder="Roll Number or Email " name="Rollno">
+         <button type="submit" class="btn btn-primary mt-4">Search</button>
+         </form>
+        </div>
+        
+</section>
+</div>
+
+
+{% endblock body %}
