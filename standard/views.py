@@ -72,16 +72,16 @@ def registered(request):
         User.objects.create_user(username=username, password=password, email=email)
         user = auth_view.authenticate(username=username, password=password)
         auth_view.login(request, user)
+        messages.info(request, 'Your Account is Created, Login to continue...', extra_tags='!')
     except:
         messages.info(request, 'Email already used in an account! Login to your account', extra_tags='Error')
-        return redirect('/login')
+    return redirect('/login')
     context = {'name':name, "standard":standard, 'title':'registered the user', "email":email}
     return render(request, 'userregistered.html', context)
 
 def search_students(request):
     context = {'title':'search students'}
     return render(request, 'findfriends.html', context)
-
 
 def friendifound(request):
     rollnum =request.POST['Rollno']
@@ -138,3 +138,10 @@ def buy_cource(request, standard):
 def logout(request):
     auth_view.logout(request)
     return redirect('/login')
+
+
+def editingProfile_home(request):
+    if User.is_authenticated:
+        return render(request, 'profile.html')
+    else:
+        return redirect('/login')

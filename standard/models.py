@@ -1,7 +1,5 @@
 from django.db import models
 
-
-
 class Fee(models.Model):
     standard = models.IntegerField(unique=True)
     fee = models.IntegerField()
@@ -9,13 +7,12 @@ class Fee(models.Model):
         return f"class {self.standard} fee = {self.fee} Rs."
 
 
-
 # Create your models here.
 class Student(models.Model):
     name = models.CharField(max_length=45, null=False)
-    standard = models.IntegerField(null=False)
-    phone = models.IntegerField(null=False)  
-    address = models.CharField(max_length=100, null=False)
+    standard = models.IntegerField(null=True)
+    phone = models.IntegerField(null=True)  
+    address = models.CharField(max_length=100, null=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=20, null=True)
     def __str__(self):

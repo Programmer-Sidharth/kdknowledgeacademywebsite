@@ -4,7 +4,7 @@
 <div class="text-center mb-4">
     <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
     <h1 class="h3 mb-3 font-weight-normal"><img src='{% static 'standard/kd.png' %}' alt="logo" width="120">KD Knowledge Academy</h1>
-    <p>Register to your account<a href="https://caniuse.com/#feat=css-placeholder-shown"></a></p>
+    <p>Register your account<a href="https://caniuse.com/#feat=css-placeholder-shown"></a></p>
   </div>
 <form action='user/' method='post' class="form-signin container">
 {% csrf_token %}
@@ -22,7 +22,17 @@
         <input type="text" class="form-control" name='username' id="validationDefaultUsername" placeholder='Username' aria-describedby="inputGroupPrepend2" required>
       </div>
     </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefaultUsername">Phone</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend2">+91</span>
+        </div>
+        <input type="intiger" class="form-control" name='phone' id="validationDefaultUsername" placeholder='Phone number' aria-describedby="inputGroupPrepend2" required>
+      </div>
+    </div>
   </div>
+  
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationDefault04">Email</label>
@@ -43,5 +53,6 @@
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
 </form>
 {% endblock %}

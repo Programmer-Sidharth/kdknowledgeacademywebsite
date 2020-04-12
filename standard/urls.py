@@ -5,6 +5,7 @@ from KD import settings
 urlpatterns = [
     path('', index),
     path('rollno/<str:id>/', student),
+    path('profile/', editingProfile_home),
     path('register/', register),
     path('login/', login),
     path('logout/', logout),
