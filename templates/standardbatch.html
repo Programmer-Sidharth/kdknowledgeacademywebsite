@@ -1,4 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block body %}
-
+<section class="jumbotron text-center bg-light">
+    <div class="container">
+        <img src='{% static 'standard/kd.png' %}' alt="logo" width="120">
+        <h1 class="jumbotron-heading"><span>KD Knowledge Academy</span></h1>
+        <h1 class="jumbotron-heading"><span>{{class}}th Standard</span></h1>
+        <p class="lead text-muted">Buy The Best class-{{class}} Cource.</p>
+        <p>
+            <a href="/class{{class}}/buy/" class="btn btn-danger my-2">Buy Now!</a>
+        </p>
+    </div>
+</section>
 {% endblock body %}

@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<div class="jumbotron jumbotron-fluid text-light bg-dark">
+<div class="container text-center">
+  <h1 class="display-4">Students Search results</h1>
+  <p class="lead mb-4">matching results are here.</p>
+  <div class='container text-center'>
+{% for result in results %}
+<div class="card text-center mb-5">
+  <div class="card-header text-capitalize text-dark">
+    {{result.company_name}}
+  </div>
+  <div class="card-body text-dark">
+    <p class="card-text text-capitalize">In {{result.area}}</p>
+    {% if result.contact_person %}
+    <p class="card-text text-capitalize">Contact Person : {{result.contact_person}}</p>
+    {% elif result.description%}
+    <p class="card-text text-capitalize">{{result.description}}</p>
+    {% endif %}
+    {% if result.area %}<p class="card-text text-capitalize">Address : {{result.area}}</p>{% endif %}
+    {% if result.custom_url %}
+    <a href="/company/{{result.custom_url}}" class="btn btn-outline-info">Go to profile</a>
+    {% else %}
+    <a href="/company/{{result.company_name}}" class="btn btn-primary">Go To Profile</a>
+    {% endif %}
+  </div>
+  <div class="card-footer text-muted">Matched to Company's Area
+  </div>
+</div>
+{% endfor %}
+
+
+{% for result in name %}
+<div class="card text-center mb-5">
+  <div class="card-header text-capitalize text-dark">
+    {{result.company_name}}
+  </div>
+  <div class="card-body text-dark">
+    <p class="card-text text-capitalize">In {{result.area}}</p>
+    {% if result.contact_person %}
+    <p class="card-text text-capitalize">Contact Person : {{result.contact_person}}</p>
+    {% elif result.description%}
+    <p class="card-text text-capitalize">{{result.description}}</p>
+    {% endif %}
+    {% if result.area %}<p class="card-text text-capitalize">Address : {{result.area}}</p>{% endif %}
+    {% if result.custom_url %}
+    <a href="/company/{{result.custom_url}}" class="btn btn-outline-info">Go to profile</a>
+    {% else %}
+    <a href="/company/{{result.company_name}}" class="btn btn-primary">Go To Profile</a>
+    {% endif %}
+  </div>
+  <div class="card-footer text-muted">Matched to Company's Name
+  </div>
+</div>
+{% endfor %}
+{% for result in standard %}
+<div class="card text-center mb-5">
+  <div class="card-header text-capitalize text-dark">
+    {{result.company_name}}
+  </div>
+  <div class="card-body text-dark">
+    <p class="card-text text-capitalize">In {{result.area}}</p>
+    {% if result.contact_person %}
+    <p class="card-text text-capitalize">Contact Person : {{result.contact_person}}</p>
+    {% elif result.description%}
+    <p class="card-text text-capitalize">{{result.description}}</p>
+    {% endif %}
+    {% if result.area %}<p class="card-text text-capitalize">Address : {{result.area}}</p>{% endif %}
+    {% if result.custom_url %}
+    <a href="/company/{{result.custom_url}}" class="btn btn-outline-info">Go to profile</a>
+    {% else %}
+    <a href="/company/{{result.company_name}}" class="btn btn-primary">Go To Profile</a>
+    {% endif %}
+  </div>
+  <div class="card-footer text-muted">Matched to this company's website
+  </div>
+</div>
+{% endfor %}
+{% for result in phone %}
+<div class="card text-center mb-5">
+  <div class="card-header text-capitalize text-dark">
+    {{result.company_name}}
+  </div>
+  <div class="card-body text-dark">
+    <p class="card-text text-capitalize">In {{result.area}}</p>
+    {% if result.contact_person %}
+    <p class="card-text text-capitalize">Contact Person : {{result.contact_person}}</p>
+    {% elif result.description%}
+    <p class="card-text text-capitalize">{{result.description}}</p>
+    {% endif %}
+    {% if result.area %}<p class="card-text text-capitalize">Address : {{result.area}}</p>{% endif %}
+    {% if result.custom_url %}
+    <a href="/company/{{result.custom_url}}" class="btn btn-outline-info">Go to profile</a>
+    {% else %}
+    <a href="/company/{{result.company_name}}" class="btn btn-primary">Go To Profile</a>
+    {% endif %}
+  </div>
+  <div class="card-footer text-muted">Matched to this Company's email
+  </div>
+</div>
+{% endfor %}
+{% for result in address %}
+<div class="card text-center mb-5">
+  <div class="card-header text-capitalize text-dark">
+    {{result.company_name}}
+  </div>
+  <div class="card-body text-dark">
+    <p class="card-text text-capitalize">In {{result.area}}</p>
+    {% if result.contact_person %}
+    <p class="card-text text-capitalize">Contact Person : {{result.contact_person}}</p>
+    {% elif result.description%}
+    <p class="card-text text-capitalize">{{result.description}}</p>
+    {% endif %}
+    {% if result.area %}<p class="card-text text-capitalize">Address : {{result.area}}</p>{% endif %}
+    {% if result.custom_url %}
+    <a href="/company/{{result.custom_url}}" class="btn btn-outline-info">Go to profile</a>
+    {% else %}
+    <a href="/company/{{result.company_name}}" class="btn btn-primary">Go To Profile</a>
+    {% endif %}
+  </div>
+  <div class="card-footer text-muted">Matched to its Phone Number
+  </div>
+</div>
+{% endfor %}
+
+{% for result in email %}
+<div class="card text-center mb-5">
+  <div class="card-header text-capitalize text-dark">
+    {{result.name}}
+  </div>
+  <div class="card-body text-dark">
+    <p class="card-text text-capitalize">In {{result.standard}}</p>
+    <p class="card-text text-capitalize">email : {{result.email}}</p>
+    <a href="/rollno/{{result.id}}" class="btn btn-outline-info">Go to profile</a>
+  </div>
+  <div class="card-footer text-muted">Matched to its email
+  </div>
+</div>
+{% endfor %}
+
+</div>
+{% endfor %}
+</div>
+  </div></div>
+
+
+
+{% endblock body %}

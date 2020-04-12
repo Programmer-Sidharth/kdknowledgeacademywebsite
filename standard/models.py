@@ -32,3 +32,11 @@ class Course(models.Model):
     venue = models.CharField(max_length=50)
     def __str__(self):
         return f"{self.name}, class {self.standard} .... {self.price}Rs."
+
+
+class Alert(models.Model):
+    page_name = models.CharField(max_length=100)
+    AlertTopic = models.CharField(max_length=100)
+    AlertMessage = models.CharField(max_length=100)
+
+
