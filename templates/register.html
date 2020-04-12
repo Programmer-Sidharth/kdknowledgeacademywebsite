@@ -1,21 +1,47 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
+<div class="text-center mb-4">
+    <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal"><img src='{% static 'standard/kd.png' %}' alt="logo" width="120">KD Knowledge Academy</h1>
+    <p>Register to your account<a href="https://caniuse.com/#feat=css-placeholder-shown"></a></p>
+  </div>
 <form action='user/' method='post' class="form-signin container">
 {% csrf_token %}
-  <div class="text-center mb-4">
-    <h1 class="h3 mb-3 font-weight-normal"><img src='{% static 'standard/kd.png' %}' alt="logo" width="120">KD Knowledge Academy</h1>
-    <p>Register your account<a href="https://caniuse.com/#feat=css-placeholder-shown"></a></p>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">Name</label>
+      <input type="text" name='name' class="form-control" id="validationDefault01" placeholder="Sidharth" required>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefaultUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend2">@</span>
+        </div>
+        <input type="text" class="form-control" name='username' id="validationDefaultUsername" placeholder='Username' aria-describedby="inputGroupPrepend2" required>
+      </div>
+    </div>
   </div>
-
-  <div class="form-label-group py-4">
-    <input type="text" id="inputusername" class="form-control" placeholder="Username" name="username" required autofocus>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault04">Email</label>
+      <input type="email" name='email' placeholder='youremail.yourdomain.com' class="form-control" id="validationDefault03" required>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationDefault04">Standard</label>
+      <select class="custom-select" name='standard' id="validationDefault04" required>
+        <option selected disabled value="">Choose...</option>
+        {% for class in classes %}
+        <option>{{class.standard}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationDefault05">Password</label>
+      <input type="text" class="form-control" name='password' id="validationDefault05" required>
+    </div>
   </div>
-
-  <div class="form-label-group pb-4">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"required>
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-  <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2019</p>
+  <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 {% endblock %}

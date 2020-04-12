@@ -45,7 +45,8 @@ def login(request):
     return render(request, 'login.html', context)
 
 def register(request):
-    context = {'title':'Register'}
+    classes = Fee.objects.all()
+    context = {'title':'Register', 'classes':classes}
     return render(request, 'register.html', context)
 
 def cources(request):
@@ -53,7 +54,6 @@ def cources(request):
     classes = Fee.objects.all()
     context = {'classes':classes, 'title':'Cources'}
     return render(request, 'cources.html', context)
-
 
 
 def students_on_class(request, standard):
@@ -65,16 +65,17 @@ def registered(request):
     username = request.POST['username']
     name = request.POST['name']
     standard = request.POST['standard']
-    address = request.POST['address']
-    phone = request.POST['phone']
     email = request.POST['email']
     password = request.POST['password']
     try:
+        messages.info(request, 'Your account is created!', extra_tags=f'Hi {username}')
         User.objects.create_user(username=username, password=password, email=email)
+        user = auth_view.authenticate(username=username, password=password)
+        auth_view.login(request, user)
     except:
-        messages.info(request, 'Email already used in a account! Login to your account', extra_tags='Error')
+        messages.info(request, 'Email already used in an account! Login to your account', extra_tags='Error')
         return redirect('/login')
-    context = {'name':name, "standard":standard, "address":address, "phone":phone, 'title':'registered the user', "email":email}
+    context = {'name':name, "standard":standard, 'title':'registered the user', "email":email}
     return render(request, 'userregistered.html', context)
 
 def search_students(request):

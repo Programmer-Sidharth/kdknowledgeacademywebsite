@@ -12,9 +12,9 @@ class Fee(models.Model):
 
 # Create your models here.
 class Student(models.Model):
-    name = models.CharField(max_length=35, null=False)
+    name = models.CharField(max_length=45, null=False)
     standard = models.IntegerField(null=False)
-    phone = models.IntegerField(null=False)
+    phone = models.IntegerField(null=False)  
     address = models.CharField(max_length=100, null=False)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=20, null=True)
