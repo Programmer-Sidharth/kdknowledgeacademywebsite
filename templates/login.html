@@ -11,12 +11,13 @@
   </div>
 
   <div class="form-label-group py-4">
-    <input type="text" id="inputusername" class="form-control" placeholder="Username" name="username" required autofocus>
+    <input type="text" id="inputusername" class="form-control" placeholder="Username" name="username" {% if user.username %} value='{{user.username}}'{% endif %} required autofocus>
   </div>
 
   <div class="form-label-group pb-4">
     <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"required>
   </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <button class="btn btn-primary" type="submit">Login</button>
+  <a class="btn btn-secondary my-2" href='/register/'>Or Create An Account</a>
 </form>
 {% endblock body %}

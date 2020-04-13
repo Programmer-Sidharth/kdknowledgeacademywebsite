@@ -17,5 +17,5 @@ urlpatterns = [
     path('class<str:standard>/buy/', buy_cource),
     path('register/user/', registered),
     path('search_students/', search_students),
-    path('search_students/user/', friendRelated),
+    path('search_students/user/', friendifound),
 ]

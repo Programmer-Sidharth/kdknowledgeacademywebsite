@@ -6,12 +6,10 @@ class Fee(models.Model):
     def __str__(self):
         return f"class {self.standard} fee = {self.fee} Rs."
 
-
-# Create your models here.
 class Student(models.Model):
-    name = models.CharField(max_length=45, null=False)
+    name = models.CharField(max_length=45, null=False, unique=True)
     standard = models.IntegerField(null=True)
-    phone = models.IntegerField(null=True)  
+    phone = models.IntegerField(null=True)
     address = models.CharField(max_length=100, null=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=20, null=True)

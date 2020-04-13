@@ -50,7 +50,7 @@ def register(request):
     return render(request, 'register.html', context)
 
 def cources(request):
-    messages.info(request, 'Get MORE at low Prices', extra_tags='Corona Sale')
+    messages.info(request, 'Get MORE at low Prices', extra_tags='CoronaVirus Sale')
     classes = Fee.objects.all()
     context = {'classes':classes, 'title':'Cources'}
     return render(request, 'cources.html', context)
@@ -69,15 +69,14 @@ def registered(request):
     password = request.POST['password']
     try:
         messages.info(request, 'Your account is created!', extra_tags=f'Hi {username}')
-        User.objects.create_user(username=username, password=password, email=email)
+        User.objects.create_user(username=username, first_name=name, password=password, email=email)
         user = auth_view.authenticate(username=username, password=password)
         auth_view.login(request, user)
-        messages.info(request, 'Your Account is Created, Login to continue...', extra_tags='!')
     except:
-        messages.info(request, 'Email already used in an account! Login to your account', extra_tags='Error')
-    return redirect('/login')
+        messages.info(request, 'Login to your account', extra_tags='Account Already Exists!')
+        return redirect('/login')
     context = {'name':name, "standard":standard, 'title':'registered the user', "email":email}
-    return render(request, 'userregistered.html', context)
+    return redirect('/')
 
 def search_students(request):
     context = {'title':'search students'}
@@ -136,15 +135,20 @@ def buy_cource(request, standard):
 
 def logout(request):
     auth_view.logout(request)
+    messages.info(request, 'Login to your another account', extra_tags='You are logged out successfully!')
     return redirect('/login')
 
 
 def editingProfile_home(request):
-    classes = Fee.objects.all()
-    context = {'title':'Register', 'classes':classes}
     if User.is_authenticated:
+        classes = Fee.objects.all()
+        context = {'title':'Profile', 'classes':classes}
         return render(request, 'profile.html', context)
     else:
         return redirect('/login')
+
+
 def updateProfile(request):
-    pass
+    email = request.POST['email']
+    messages.info(request, f'Your email is added as {email}', extra_tags='Congo!')
+    return redirect('/profile')
