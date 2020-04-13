@@ -7,6 +7,7 @@ urlpatterns = [
     path('rollno/<str:id>/', student),
     path('profile/', editingProfile_home),
     path('register/', register),
+    path('profile/update-details/', updateProfile),
     path('login/', login),
     path('logout/', logout),
     path('login/myaccount/', profile),

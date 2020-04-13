@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
-
+{% if user.is_authenticated %}
+<h1>username = {{user.username}}</h1>
+<h1>name = {{user.first_name}}</h1>
+{% else %}
+<h1>Anonymous User</h1>
+{% endif %}
 {% endblock body %}

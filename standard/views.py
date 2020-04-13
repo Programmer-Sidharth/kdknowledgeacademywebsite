@@ -101,39 +101,38 @@ def friendifound(request):
 
 
 def friendRelated(request):
-    Area =request.POST['Rollno']
-    if Area == '':
-            return redirect('/')
+    Area = request.POST['Rollno']
+    # if Area == '':
+    #         return redirect('/')
     if request.method == 'post':
         try:
             results_id = Student.objects.filter(id=Area)
         except:
             pass
         try:
-            results_name = Student.objects.filter(standard__icontains=Area)
+            results_name = User.objects.filter(standard__icontains=Area)
         except:
             pass
         try:
-            results_email = Student.objects.filter(email__icontains=Area)
+            results_email = User.objects.filter(email__icontains=Area)
         except:
             pass
         try:
-            results_phone = Student.objects.filter(phone__icontains=Area)
+            results_username = User.objects.filter(username__icontains=Area)
         except:
             pass
-        try:
-            results_address = Student.objects.filter(address__icontains=Area)
-        except:
-            pass       
-        params = {'id':results_id, 'name':results_name, 'email':results_email, "phone":results_phone, "address":results_address, 'title':'search results'}
+        params = {'id':results_id, 'name':results_name, 'email':results_email, 'title':'search results'}
         return render(request, 'search_results_of_students.html', params)
     else:
         return redirect('/')
 
 def buy_cource(request, standard):
-
-    context = {'class':standard, 'title':'Buy Cource'}
-    return render(request, 'buycource.html', context)
+    if User.is_authenticated:
+        context = {'class':standard, 'title':'Buy Cource'}
+        return render(request, 'buycource.html', context)
+    else:
+        messages.info(request, 'You Need To Login To Your Account Or Create Account First', extra_tags='You are Anonymous User! ')
+        return redirect('/login')
 
 def logout(request):
     auth_view.logout(request)
@@ -141,7 +140,11 @@ def logout(request):
 
 
 def editingProfile_home(request):
+    classes = Fee.objects.all()
+    context = {'title':'Register', 'classes':classes}
     if User.is_authenticated:
-        return render(request, 'profile.html')
+        return render(request, 'profile.html', context)
     else:
         return redirect('/login')
+def updateProfile(request):
+    pass
