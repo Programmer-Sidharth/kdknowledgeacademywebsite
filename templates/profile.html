@@ -8,7 +8,9 @@
         <h1 class="jumbotron-heading"><span>#{{user.username}}{% if user.first_name == True%}({{user.first_name}}){% endif %}</span></h1>
         <p class="lead text-muted">KD Knowledge Academy is the Swatantra Nagar's one of the best coaching institution<br>We belive in quality eduaction.</p>
         <p>
-            <a href="/rollno/{{user.id}}" class="btn btn-info my-2">See Your Profile live</a>
+        {% if Students %}
+        <a href="/rollno/{{students.id}}" class="btn btn-info my-2">See Your Profile live</a>
+            {% endif %}
         </p>
     </div>
 </section>

@@ -22,7 +22,8 @@ def profile(request):
     else:
         return redirect('/login')
 def index(request):
-    return render(request, 'index.html')
+    context = {'title':"Home"}
+    return render(request, 'index.html', context)
 
 def standard_details(request, standard):
     context = {"standard":standard, 'title':f"class {standard}th cource", 'class':standard}
@@ -149,6 +150,15 @@ def editingProfile_home(request):
 
 
 def updateProfile(request):
+    name = request.POST['name']
     email = request.POST['email']
-    messages.info(request, f'Your email is added as {email}', extra_tags='Congo!')
+    standard = request.POST['standard']
+    phone = request.POST['phone']
+    obj, created = Student.objects.update_or_create(name=User.username,
+    defaults={'email': email, 'standard':standard, 'phone':phone},
+)
+    if created:
+        messages.info(request, 'Your details are Created!', extra_tags='Congratulations!')
+    else:
+        messages.info(request, 'Your details are updated!', extra_tags='Congratulations!')
     return redirect('/profile')
